@@ -39,8 +39,8 @@ object ClusterShardingQueriesSpecConfig extends MultiNodeClusterShardingConfig(a
             # max 4 each time  
             rebalance-absolute-limit = 4
             
-            # this is a fraction of the total shard, set explicitly to 1.0 to 
-            # make it all and for the rebalance to be based on rebalance-absolute-limit
+            # this is a fraction of the total shard, set explicitly to 1.0 to select all shards
+            #  and force the rebalance to be based on rebalance-absolute-limit
             rebalance-relative-limit = 1.0 
           }
         }
