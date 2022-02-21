@@ -29,13 +29,20 @@ object ClusterShardingQueriesSpec {
   val shardTypeName = "DatatypeA"
 }
 
-object ClusterShardingQueriesSpecConfig
-    extends MultiNodeClusterShardingConfig(additionalConfig = """
+object ClusterShardingQueriesSpecConfig extends MultiNodeClusterShardingConfig(additionalConfig = s"""
         akka.log-dead-letters-during-shutdown = off
         akka.cluster.sharding {
           shard-region-query-timeout = 2ms
           updating-state-timeout = 2s
           waiting-for-state-timeout = 2s
+          least-shard-allocation-strategy {
+            # max 4 each time  
+            rebalance-absolute-limit = 4
+            
+            # this is a fraction of the total shard, set explicitly to 1.0 to 
+            # make it all and for the rebalance to be based on rebalance-absolute-limit
+            rebalance-relative-limit = 1.0 
+          }
         }
         """) {
 
