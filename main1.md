@@ -4,3 +4,9 @@
 ```
 -Dfile.encoding=UTF-8 -Dakka.no.discipline
 ```
+
+### sbt编译命令
+```
+$ sbt clean
+$ sbt compile -Dakka.no.discipline
+```
