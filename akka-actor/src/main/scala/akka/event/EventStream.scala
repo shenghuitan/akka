@@ -18,8 +18,14 @@ import akka.util.Subclassification
  * EventStreams employ SubchannelClassification, which means that if you listen to a Class,
  * you'll receive any message that is of that type or a subtype.
  *
+ * EventStream是一个发布订阅的system和user都可以生成的事件流，订阅的是ActorRefs，channels是Class类型，
+ * Event是任何的对象。
+ * EventStream采用了SubchannelClassification，这意味这如果你监听一个Class，你将收到任何指定类型或其子类型的消息。
+ *
  * The debug flag in the constructor toggles if operations on this EventStream should also be published
  * as Debug-Events
+ *
+ * 构造器的debug标记用于切换，如果在EventStream的操作应同时被发布为Debug-Events
  */
 class EventStream(sys: ActorSystem, private val debug: Boolean) extends LoggingBus with SubchannelClassification {
 

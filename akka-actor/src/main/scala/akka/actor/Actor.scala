@@ -282,6 +282,8 @@ class ActorInterruptedException private[akka] (cause: Throwable) extends AkkaExc
 
 /**
  * This message is published to the EventStream whenever an Actor receives a message it doesn't understand
+ *
+ * Actor未能处理的消息，将被封装成UnhandledMessage，再转发到EventStream
  */
 @SerialVersionUID(1L)
 final case class UnhandledMessage(

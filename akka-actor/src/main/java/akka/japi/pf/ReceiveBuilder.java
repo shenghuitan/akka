@@ -121,11 +121,17 @@ public class ReceiveBuilder {
   /**
    * Add a new case statement to this builder.
    *
+   * 向此builder添加一个新的case语句。
+   *
    * @param type a type to match the argument against
+   *             匹配参数的类型
    * @param externalPredicate a external predicate that will be evaluated if the type matches
+   *                          如果类型匹配，将被评估的外部predicate
    * @param apply an action to apply to the argument if the type matches and the predicate returns
    *     true
+   *              应用于参数的操作，如果类型匹配且predicate返回true
    * @return a builder with the case statement added
+   *         添加了case语句的builder
    */
   public <P> ReceiveBuilder match(
       final Class<P> type,
@@ -166,6 +172,9 @@ public class ReceiveBuilder {
    * Add a new case statement to this builder without compile time type check. Should normally not
    * be used, but when matching on class with generic type argument it can be useful, e.g. <code>
    * List.class</code> and <code>(List&lt;String&gt; list) -> {}</code>.
+   *
+   * 在没有编译时类型检查的情况下向此builder添加新的case语句。一般情况下不应被使用，但当通过通用类型参数来
+   * 匹配class时，它会很有用，例如：List.class和List<String> list) -> {}
    *
    * @param type a type to match the argument against
    * @param externalPredicate an external predicate that will be evaluated if the type matches

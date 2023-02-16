@@ -126,7 +126,11 @@ abstract class ActorRef extends java.lang.Comparable[ActorRef] with Serializable
    * Sends the specified message to this ActorRef, i.e. fire-and-forget
    * semantics, including the sender reference if possible.
    *
+   * 发送指定的消息到这个ActorRef，也就是即发即弃的语义，如果可能则包含sender的引用。
+   *
    * Pass [[akka.actor.ActorRef]] `noSender` or `null` as sender if there is nobody to reply to
+   *
+   * 发送ActorRef noSender或null作为sender，如果不需要回复消息
    */
   final def tell(msg: Any, sender: ActorRef): Unit = this.!(msg)(sender)
 

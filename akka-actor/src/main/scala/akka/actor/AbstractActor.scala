@@ -28,12 +28,16 @@ object AbstractActor {
    * using the `ReceiveBuilder` since it in the end is just a wrapper around a
    * Scala `PartialFunction`. In Java, you can implement `PartialFunction` by
    * extending `AbstractPartialFunction`.
+   *
+   * 定义了消息被处理的方式
    */
   final class Receive(val onMessage: PartialFunction[Any, BoxedUnit]) {
 
     /**
      * Composes this `Receive` with a fallback which gets applied
      * where this partial function is not defined.
+     *
+     * 消息类型不可适配的回退处理方式
      */
     def orElse(other: Receive): Receive =
       new Receive(onMessage.orElse(other.onMessage))
