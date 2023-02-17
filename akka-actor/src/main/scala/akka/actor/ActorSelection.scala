@@ -27,6 +27,8 @@ import akka.util.ccompat._
 /**
  * An ActorSelection is a logical view of a section of an ActorSystem's tree of Actors,
  * allowing for broadcasting of messages to that section.
+ *
+ * ActorSelection是ActorSystem的Actor树的一部分逻辑视图，允许向该部分广播消息。
  */
 @SerialVersionUID(1L)
 @ccompatUsedUntil213
@@ -63,8 +65,14 @@ abstract class ActorSelection extends Serializable {
    * no such actor exists or the identification didn't complete within the
    * supplied `timeout`.
    *
+   * 解析匹配当前selection的ActorRef。
+   * 返回一个Future结果，用于完成ActorRef，如果这样的一个actor存在。完成于ActorNotFound失败，
+   * 如果没有这样的actor存在，或身份鉴别没有完成，在超时范围内。
+   *
    * Under the hood it talks to the actor to verify its existence and acquire its
    * [[ActorRef]].
+   *
+   * 在遮盖下，它告诉actor去确认它的存在和获取它的ActorRef。
    */
   def resolveOne()(implicit timeout: Timeout): Future[ActorRef] = {
     implicit val ec = ExecutionContexts.parasitic

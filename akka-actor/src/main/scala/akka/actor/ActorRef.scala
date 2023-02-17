@@ -1052,9 +1052,12 @@ private[akka] class VirtualPathContainer(
 
   /**
    * Have this FunctionRef watch the given Actor.
+   * 使当前FunctionRef观察给定的Actor
    *
    * Upon receiving the Terminated message, `unwatch` must be called to avoid resource leak,
    * which is different from an ordinary actor.
+   *
+   * 收到Terminated消息后，必须调用unwatch来避免资源泄漏，这与常规的actor是不同的。
    */
   def watch(actorRef: ActorRef): Unit = {
     this.synchronized {
